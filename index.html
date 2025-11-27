@@ -2,52 +2,22 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
-<!-- Fuentes: Playfair Display (título) + Inter (texto) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-  :root{
-    --bg: #f7f2ec;
-    --popup-bg-1: #fff6eb;
-    --popup-bg-2: #ffe8d0;
-    --accent: #2f7d44;
-    --accent-2: #b03a3a;
-    --border: #d7bfa4;
-    --muted: #6b6b6b;
-  }
-
-  html,body {
-    height: 100%;
-    margin: 0;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: var(--bg);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
   body {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 32px 16px;
+    background: #f7f2ec;
   }
 
   .calendar-container {
     position: relative;
-    width: 920px; /* reduje para demo más manejable; ajusta si quieres */
-    max-width: 100%;
-    height: 516px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    border-radius: 10px;
-    overflow: hidden;
-    background: white;
+    width: 1832px;
+    height: 1030px;
   }
 
   .calendar-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
   }
 
@@ -62,157 +32,158 @@
   .popup-bg {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.5);
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1200;
-    padding: 20px;
   }
 
-  /* Popup rediseñado y centrado del contenido */
   .popup {
-    width: 760px;               /* ancho mayor para parecerse a tu captura */
-    max-width: calc(100% - 48px);
-    background: linear-gradient(135deg, var(--popup-bg-1), var(--popup-bg-2));
-    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    border: 2px solid var(--border);
+    background: white;
+    padding: 20px;
     border-radius: 16px;
-    padding: 26px 28px;
-    font-size: 16px;
+    width: 350px;
+    font-size: 18px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    align-items: center;        /* mantiene el contenido centrado horizontalmente */
-  }
-
-  /* Título con tipografía elegante */
-  #popupText {
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    line-height: 1.05;
-    color: #1e1e1e;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    padding-top: 4px;
-  }
-
-  /* Contenedor que centra el textarea y controla su ancho */
-  .notes-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  textarea#notesInput {
-    width: 88%;                 /* centrado y con margen lateral */
-    min-height: 140px;         /* más alto, como en la captura */
-    max-height: 320px;
-    border-radius: 10px;
-    border: 1.5px solid rgba(214,196,184,0.9);
-    padding: 14px 12px;
-    resize: vertical;
-    font-size: 15px;
-    font-family: "Inter", system-ui, sans-serif;
-    background: #fff;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
-    color: #222;
-    outline: none;
-    caret-color: var(--accent);
-  }
-
-  textarea#notesInput::placeholder{
-    color: #9c9c9c;
-    font-weight: 300;
-    letter-spacing: 0.2px;
-  }
-
-  /* Botones juntos y centrados */
-  .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 6px;
-  }
-
-  .btn {
-    min-width: 130px;
-    padding: 12px 18px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 16px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-    transition: transform .12s ease, box-shadow .12s ease;
-  }
-
-  .btn:active { transform: translateY(1px); }
-
-  .save-btn {
-    background: var(--accent);
-    color: white;
-  }
-
-  .save-btn:hover {
-    box-shadow: 0 10px 26px rgba(46,117,68,0.18);
   }
 
   .close-btn {
-    background: var(--accent-2);
+    margin-top: 15px;
+    padding: 8px 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background: #c44;
     color: white;
   }
 
-  .close-btn:hover {
-    box-shadow: 0 10px 26px rgba(176,58,58,0.14);
+  textarea {
+    width: 100%;
+    height: 90px;
+    margin-top: 10px;
+    resize: none;
+    border-radius: 8px;
+    padding: 8px;
   }
 
-  /* Hover en días (sin blur) */
+  .save-btn {
+    margin-top: 10px;
+    padding: 8px 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background: #4c8;
+    color: white;
+  }
+  /* Mejora visual avanzada */
+  .popup-bg {
+  }
+
+  .popup {
+    background: linear-gradient(135deg, #fff6eb, #ffe8d0);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 2px solid #d7bfa4;
+    animation: popIn 0.25s ease-out;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
   .day:hover {
     background: rgba(255, 255, 255, 0.18);
     border-radius: 12px;
     transition: 0.25s;
   }
 
-  /* Reponsive: popup más pequeño en móvil */
-  @media (max-width: 520px){
-    .popup{
-      padding: 18px;
-    }
-    #popupText{ font-size: 20px; }
-    textarea#notesInput{ width: 100%; min-height: 110px; }
-    .btn{ min-width: 110px; padding: 10px 14px; font-size: 15px; }
+  .notes-box {
+    margin-top: 15px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e3d5c8;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.07);
   }
 
+  .textarea-note {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid #d6c4b8;
+    padding: 8px;
+    resize: none;
+    font-size: 15px;
+    background: #fffdf9;
+  }
+
+  .save-btn {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background: #2f7d44;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .save-btn:hover {
+    background: #46a75e;
+  }
+
+  .close-btn {
+    background: #b03a3a !important;
+  }
 </style>
 </head>
 <body>
 
 <div class="calendar-container">
-  <img src="calendario.png" class="calendar-image" alt="Calendario">
+  <img src="calendario.png" class="calendar-image">
 
-  <!-- Aquí puedes mantener tus .day con los estilos de posición -->
-  <div class="day" style="top:60px; left:90px" data-day="1"></div>
-  <div class="day" style="top:60px; left:200px" data-day="2"></div>
-  <div class="day" style="top:60px; left:310px" data-day="3"></div>
-  <!-- ... resto de días ... -->
+  <!-- Fila 0 -->
+  <div class="day" style="top:277px; left:150px" data-day="1"></div>
+  <div class="day" style="top:277px; left:280px" data-day="2"></div>
+  <div class="day" style="top:277px; left:390px" data-day="3"></div>
+  <div class="day" style="top:277px; left:500px" data-day="4"></div>
+  <div class="day" style="top:277px; left:610px" data-day="5"></div>
+  <div class="day" style="top:277px; left:730px" data-day="6"></div>
+  <div class="day" style="top:397px; left:40px" data-day="7"></div>
+
+  <!-- Fila 1 -->
+  <div class="day" style="top:397px; left:150px" data-day="8"></div>
+  <div class="day" style="top:397px; left:280px" data-day="9"></div>
+  <div class="day" style="top:397px; left:390px" data-day="10"></div>
+  <div class="day" style="top:397px; left:500px" data-day="11"></div>
+  <div class="day" style="top:397px; left:610px" data-day="12"></div>
+  <div class="day" style="top:397px; left:730px" data-day="13"></div>
+  <div class="day" style="top:547px; left:40px" data-day="14"></div>
+
+  <!-- Fila 2 -->
+  <div class="day" style="top:547px; left:150px" data-day="15"></div>
+  <div class="day" style="top:547px; left:280px" data-day="16"></div>
+  <div class="day" style="top:547px; left:390px" data-day="17"></div>
+  <div class="day" style="top:547px; left:500px" data-day="18"></div>
+  <div class="day" style="top:547px; left:610px" data-day="19"></div>
+  <div class="day" style="top:547px; left:730px" data-day="20"></div>
+  <div class="day" style="top:697px; left:40px" data-day="21"></div>
+
+  <!-- Fila 3 -->
+  <div class="day" style="top:697px; left:150px" data-day="22"></div>
+  <div class="day" style="top:697px; left:280px" data-day="23"></div>
+  <div class="day" style="top:697px; left:390px" data-day="24"></div>
+
 </div>
 
 <div class="popup-bg" id="popup">
-  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupText">
-    <div id="popupText">Día 13: Gracias por existir.</div>
+  <div class="popup">
+    <div id="popupText"></div>
 
-    <div class="notes-wrap">
-      <textarea id="notesInput" placeholder="Tus notas para este día..."></textarea>
-    </div>
+    <textarea id="notesInput" placeholder="Tus notas para este día..."></textarea>
+    <button class="save-btn" onclick="saveNotes()">Guardar</button>
 
-    <div class="buttons">
-      <button class="btn save-btn" onclick="saveNotes()">Guardar</button>
-      <button class="btn close-btn" onclick="closePopup()">Cerrar</button>
-    </div>
+    <button class="close-btn" onclick="closePopup()">Cerrar</button>
   </div>
 </div>
 
@@ -246,44 +217,33 @@ const mensajes = {
   24:"Día 24: Feliz Navidad, amor."
 };
 
+// Cargar notas guardadas
 function loadNotes(day) {
   return localStorage.getItem("nota_" + day) || "";
 }
 
+// Guardar notas
 function saveNotes() {
-  if (!activeDay) return;
   const texto = document.getElementById('notesInput').value;
   localStorage.setItem("nota_" + activeDay, texto);
-  // Pequeño feedback visual (no intrusivo)
-  const btn = document.querySelector('.save-btn');
-  const original = btn.innerText;
-  btn.innerText = "Guardado ✓";
-  setTimeout(()=> btn.innerText = original, 1200);
+  alert("Guardado ✔");
 }
 
 document.querySelectorAll('.day').forEach(dia => {
-  dia.addEventListener('click', (e) => {
+  dia.addEventListener('click', () => {
     activeDay = dia.dataset.day;
 
-    document.getElementById('popupText').innerText = mensajes[activeDay] || ("Día " + activeDay);
+    document.getElementById('popupText').innerText = mensajes[activeDay];
+
     const notas = loadNotes(activeDay);
     document.getElementById('notesInput').value = notas;
 
     document.getElementById('popup').style.display = 'flex';
-
-    // Foco en textarea para escribir inmediatamente
-    setTimeout(()=> document.getElementById('notesInput').focus(), 120);
   });
-});
-
-// Cerrar al pulsar fuera del diálogo
-document.getElementById('popup').addEventListener('click', function(e){
-  if (e.target === this) closePopup();
 });
 
 function closePopup() {
   document.getElementById('popup').style.display = 'none';
-  activeDay = null;
 }
 </script>
 
