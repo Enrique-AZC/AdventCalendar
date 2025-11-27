@@ -24,12 +24,11 @@
   .day {
     position: absolute;
     cursor: pointer;
-    background: rgba(255, 220, 180, 0); /* invisible pero clicable */
+    background: rgba(255, 220, 180, 0);
     width: 125px;
     height: 100px;
   }
 
-  /* Popup */
   .popup-bg {
     position: fixed;
     inset: 0;
@@ -43,7 +42,7 @@
     background: white;
     padding: 20px;
     border-radius: 16px;
-    width: 300px;
+    width: 350px;
     font-size: 18px;
     text-align: center;
   }
@@ -57,6 +56,25 @@
     background: #c44;
     color: white;
   }
+
+  textarea {
+    width: 100%;
+    height: 90px;
+    margin-top: 10px;
+    resize: none;
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .save-btn {
+    margin-top: 10px;
+    padding: 8px 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background: #4c8;
+    color: white;
+  }
 </style>
 </head>
 <body>
@@ -64,51 +82,53 @@
 <div class="calendar-container">
   <img src="calendario.png" class="calendar-image">
 
-  <!-- 24 días colocados exactamente -->
-
-  <!-- Fila 0 -->
+  <!-- FILA 0 -->
   <div class="day" style="top:277px; left:211px" data-day="1"></div>
-  <div class="day" style="top:277px; left:300px" data-day="2"></div>
-  <div class="day" style="top:277px; left:401px" data-day="3"></div>
-  <div class="day" style="top:277px; left:500px" data-day="4"></div>
-  <div class="day" style="top:277px; left:610px" data-day="5"></div>
-  <div class="day" style="top:277px; left:800px" data-day="6"></div>
-  <div class="day" style="top:397px; left:100px" data-day="7"></div>
+  <div class="day" style="top:277px; left:336px" data-day="2"></div>
+  <div class="day" style="top:277px; left:461px" data-day="3"></div>
+  <div class="day" style="top:277px; left:586px" data-day="4"></div>
+  <div class="day" style="top:277px; left:711px" data-day="5"></div>
+  <div class="day" style="top:277px; left:836px" data-day="6"></div>
 
-  <!-- Fila 1 -->
-  <div class="day" style="top:397px; left:211px" data-day="8"></div>
-  <div class="day" style="top:397px; left:300px" data-day="9"></div>
-  <div class="day" style="top:397px; left:401px" data-day="10"></div>
-  <div class="day" style="top:397px; left:500px" data-day="11"></div>
-  <div class="day" style="top:397px; left:610px" data-day="12"></div>
-  <div class="day" style="top:397px; left:800px" data-day="13"></div>
-  <div class="day" style="top:517px; left:100px" data-day="14"></div>
+  <!-- FILA 1 -->
+  <div class="day" style="top:397px; left:211px" data-day="7"></div>
+  <div class="day" style="top:397px; left:336px" data-day="8"></div>
+  <div class="day" style="top:397px; left:461px" data-day="9"></div>
+  <div class="day" style="top:397px; left:586px" data-day="10"></div>
+  <div class="day" style="top:397px; left:711px" data-day="11"></div>
+  <div class="day" style="top:397px; left:836px" data-day="12"></div>
 
-  <!-- Fila 2 -->
-  <div class="day" style="top:517px; left:211px" data-day="15"></div>
-  <div class="day" style="top:517px; left:300px" data-day="16"></div>
-  <div class="day" style="top:517px; left:401px" data-day="17"></div>
-  <div class="day" style="top:517px; left:500px" data-day="18"></div>
-  <div class="day" style="top:517px; left:610px" data-day="19"></div>
-  <div class="day" style="top:517px; left:800px" data-day="20"></div>
-  <div class="day" style="top:637px; left:100px" data-day="21"></div>
+  <!-- FILA 2 -->
+  <div class="day" style="top:517px; left:211px" data-day="13"></div>
+  <div class="day" style="top:517px; left:336px" data-day="14"></div>
+  <div class="day" style="top:517px; left:461px" data-day="15"></div>
+  <div class="day" style="top:517px; left:586px" data-day="16"></div>
+  <div class="day" style="top:517px; left:711px" data-day="17"></div>
+  <div class="day" style="top:517px; left:836px" data-day="18"></div>
 
-  <!-- Fila 3 -->
-  <div class="day" style="top:637px; left:211px" data-day="22"></div>
-  <div class="day" style="top:637px; left:300px" data-day="23"></div>
-  <div class="day" style="top:637px; left:401px" data-day="24"></div>
-
+  <!-- FILA 3 -->
+  <div class="day" style="top:637px; left:211px" data-day="19"></div>
+  <div class="day" style="top:637px; left:336px" data-day="20"></div>
+  <div class="day" style="top:637px; left:461px" data-day="21"></div>
+  <div class="day" style="top:637px; left:586px" data-day="22"></div>
+  <div class="day" style="top:637px; left:711px" data-day="23"></div>
+  <div class="day" style="top:637px; left:836px" data-day="24"></div>
 </div>
 
-<!-- Popup -->
 <div class="popup-bg" id="popup">
   <div class="popup">
     <div id="popupText"></div>
+
+    <textarea id="notesInput" placeholder="Tus notas para este día..."></textarea>
+    <button class="save-btn" onclick="saveNotes()">Guardar</button>
+
     <button class="close-btn" onclick="closePopup()">Cerrar</button>
   </div>
 </div>
 
 <script>
+let activeDay = null;
+
 const mensajes = {
   1: "Día 1: Me encanta empezar diciembre contigo ❤️",
   2: "Día 2: Eres mi persona favorita.",
@@ -136,10 +156,27 @@ const mensajes = {
   24:"Día 24: Feliz Navidad, amor."
 };
 
+// Cargar notas guardadas
+function loadNotes(day) {
+  return localStorage.getItem("nota_" + day) || "";
+}
+
+// Guardar notas
+function saveNotes() {
+  const texto = document.getElementById('notesInput').value;
+  localStorage.setItem("nota_" + activeDay, texto);
+  alert("Guardado ✔");
+}
+
 document.querySelectorAll('.day').forEach(dia => {
   dia.addEventListener('click', () => {
-    const n = dia.dataset.day;
-    document.getElementById('popupText').innerText = mensajes[n];
+    activeDay = dia.dataset.day;
+
+    document.getElementById('popupText').innerText = mensajes[activeDay];
+
+    const notas = loadNotes(activeDay);
+    document.getElementById('notesInput').value = notas;
+
     document.getElementById('popup').style.display = 'flex';
   });
 });
