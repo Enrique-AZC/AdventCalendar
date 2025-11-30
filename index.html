@@ -4,22 +4,27 @@
 <meta charset="UTF-8">
 <style>
   body {
-    display: flex;
-    justify-content: center;
-    background: #f7f2ec;
-  }
+  display: flex;
+  justify-content: center;
+  background: #f7f2ec;
+  overflow: auto;      
+  min-width: 1832px;   
+}
 
-  .calendar-container {
-    position: relative;
-    width: 1832px;
-    height: 1030px;
-  }
+.calendar-container {
+  position: relative;
+  width: 1832px;
+  height: 1030px;
+  min-width: 1832px;
+  min-height: 1030px;
+}
 
-  .calendar-image {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+
+.calendar-image {
+  width: 1832px;
+  height: 1030px;
+  display: block;
+}
 
   .day {
     position: absolute;
