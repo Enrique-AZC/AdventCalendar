@@ -90,6 +90,16 @@
     border: 2px solid #d7bfa4;
     animation: popIn 0.25s ease-out;
   }
+  .popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* esto centra todo dentro del popup */
+  }
+
+  textarea {
+  width: 90%; /* hace que el cuadro de notas no se salga y quede centrado */
+  }
+
 
   @keyframes popIn {
     from { transform: scale(0.8); opacity: 0; }
